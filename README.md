@@ -29,18 +29,18 @@ access property attributes.
 
 The C API wraps the low-level parser:
 
-    ```objective-c
-    objc_property_t property = class_getProperty([UIView class], "hidden");
-    PKPropertyAttributes attributes = PKPropertyAttributesMake(property);
-    NSLog(@"Property %s uses ivar %s", property_getName(property), attributes.ivarName);
-    ```
+```objective-c
+objc_property_t property = class_getProperty([UIView class], "hidden");
+PKPropertyAttributes attributes = PKPropertyAttributesMake(property);
+NSLog(@"Property %s uses ivar %s", property_getName(property), attributes.ivarName);
+```
 
 And the higher-level `PKProperty` class provides more convenient access:
 
-    ```objective-c
-    PKProperty *property = [PKProperty propertyWithName:@"hidden" forClass:[UIView class]];
-    NSLog(@"Property %@ uses ivar %@", property.name, property.ivarName);
-    ```
+```objective-c
+PKProperty *property = [PKProperty propertyWithName:@"hidden" forClass:[UIView class]];
+NSLog(@"Property %@ uses ivar %@", property.name, property.ivarName);
+```
 
 ### Observing
 
@@ -54,21 +54,21 @@ the properties of other objects.
 
 Observed properties need to be registered:
 
-    ```objective-c
-    + (void)initialize
-    {
-        [self addObservedProperty:@"hidden"];
-    }
-    ```
+```objective-c
++ (void)initialize
+{
+    [self addObservedProperty:@"hidden"];
+}
+```
 
 The object will then be notified of changes to observed properties:
 
-    ```objective-c
-    - (void)observeValueForProperty:(NSString *)name value:(id)value
-    {
-        NSLog(@"Property %@ has a new value: %@", name, value);
-    }
-    ```
+```objective-c
+- (void)observeValueForProperty:(NSString *)name value:(id)value
+{
+    NSLog(@"Property %@ has a new value: %@", name, value);
+}
+```
 
 ## Future Ideas
 
