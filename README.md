@@ -30,16 +30,16 @@ access property attributes.
 The C API wraps the low-level parser:
 
 ```objective-c
-objc_property_t property = class_getProperty([UIView class], "hidden");
+objc_property_t property = class_getProperty([UIDevice class], "name");
 PKPropertyAttributes attributes = PKPropertyAttributesMake(property);
-NSLog(@"Property %s uses ivar %s", property_getName(property), attributes.ivarName);
+NSLog(@"Property %s is %s", property_getName(property), attributes.isReadOnly ? "readonly" : "readwrite");
 ```
 
 And the higher-level `PKProperty` class provides more convenient access:
 
 ```objective-c
-PKProperty *property = [PKProperty propertyWithName:@"hidden" forClass:[UIView class]];
-NSLog(@"Property %@ uses ivar %@", property.name, property.ivarName);
+PKProperty *property = [PKProperty propertyWithName:@"name" forClass:[UIDevice class]];
+NSLog(@"Property %@ is %@", property.name, property.isReadOnly ? @"readonly" : @"readwrite");
 ```
 
 ### Observing
