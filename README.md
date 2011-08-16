@@ -5,9 +5,7 @@ Properties][properties].
 
 Copyright &copy; 2011, Jon Parise.
 
-## Usage
-
-### Installation
+## Installation
 
 Simply include these source files in your project:
 
@@ -18,6 +16,8 @@ The repository also includes a SenTestingKit-compatible unit test:
 
 * PropertyKitTests.h
 * PropertyKitTests.m
+
+## Usage
 
 ### Introspection
 
